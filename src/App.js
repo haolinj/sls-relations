@@ -119,10 +119,11 @@ export default compose(
         services,
         enablePhysics,
         showLabel,
+        selectedNode,
         enableComplication
       } = this.props;
 
-      if (services && services.length > 0) {
+      if (services && services.length > 0 && !selectedNode) {
         renderGraph(services, enablePhysics, showLabel, enableComplication, onNodeSelected);
       }
     }
