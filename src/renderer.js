@@ -3,37 +3,38 @@ import fp from 'lodash/fp';
 import flatten from 'flat';
 import { DataSet, Network } from 'vis/index-network';
 
-export const renderGraph = (services, enablePhysics, showLabel, enableComplication, onNodeSelected) => {
-  const relationShips = serviceRelationships(services);
-  const serviceDependencies = renderAllDeps(relationShips);
-  const simpleDependencies = renderSimpleDeps(serviceDependencies);
+export const renderGraph =
+  (services, enablePhysics, showLabel, enableComplication, onNodeSelected) => {
+    const relationShips = serviceRelationships(services);
+    const serviceDependencies = renderAllDeps(relationShips);
+    const simpleDependencies = renderSimpleDeps(serviceDependencies);
 
-  console.log('Complicated Version', serviceDependencies);
-  console.log('Simple Version', simpleDependencies);
+    console.log('Complicated Version', serviceDependencies);
+    console.log('Simple Version', simpleDependencies);
 
-  const dependencies = enableComplication ? serviceDependencies : simpleDependencies;
-  const dataSet = fp.map(nodeProps)(dependencies);
-  const edgesData =
-    fp.flow(
-      fp.map(sd => fp.map(edgeProps(sd, showLabel))(sd.dependOn)),
-      fp.flatten
-    )(dependencies);
+    const dependencies = enableComplication ? serviceDependencies : simpleDependencies;
+    const dataSet = fp.map(nodeProps)(dependencies);
+    const edgesData =
+      fp.flow(
+        fp.map(sd => fp.map(edgeProps(sd, showLabel))(sd.dependOn)),
+        fp.flatten
+      )(dependencies);
 
-  const nodes = new DataSet(dataSet);
-  const edges = new DataSet(edgesData);
-  const container = document.getElementById('output');
-  const data = { nodes, edges };
+    const nodes = new DataSet(dataSet);
+    const edges = new DataSet(edgesData);
+    const container = document.getElementById('output');
+    const data = { nodes, edges };
 
-  console.log('Edges', edgesData);
+    console.log('Edges', edgesData);
 
-  const network = new Network(container, data, {
-    physics: {
-      enabled: enablePhysics
-    }
-  });
+    const network = new Network(container, data, {
+      physics: {
+        enabled: enablePhysics
+      }
+    });
 
-  network.on('selectNode', onNodeSelected(dependencies));
-};
+    network.on('selectNode', onNodeSelected(dependencies));
+  };
 
 export const renderSelectedNode = (selectedNode) => {
   const functions = combineNames(selectedNode.functions);

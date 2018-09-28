@@ -94,7 +94,10 @@ export default compose(
         enableComplication: !enableComplication,
         selectedNode: undefined
       }),
-      fileChangedHandler: () => (event) => ({ files: event.target.files }),
+      fileChangedHandler: () => (event) => ({
+        files: event.target.files,
+        selectedNode: undefined
+      }),
       setSelectedNode: () => (selectedNode) => ({ selectedNode })
     }
   ),
@@ -111,8 +114,15 @@ export default compose(
   }),
   lifecycle({
     componentDidUpdate() {
-      const { onNodeSelected, services, enablePhysics, showLabel, enableComplication, selectedNode } = this.props;
-      if (services && services.length > 0 && !selectedNode) {
+      const {
+        onNodeSelected,
+        services,
+        enablePhysics,
+        showLabel,
+        enableComplication
+      } = this.props;
+
+      if (services && services.length > 0) {
         renderGraph(services, enablePhysics, showLabel, enableComplication, onNodeSelected);
       }
     }
