@@ -40,6 +40,7 @@ export const renderSelectedNode = (selectedNode) => {
   const resources = combineNames(selectedNode.resources);
   return (
     <div className='alert alert-info text-left' style={{ overflowX: 'scroll' }}>
+      <h5>{selectedNode.name}</h5>
       <div style={{ marginBottom: '15px' }}>
         {functions === '' ? null : <span><b>Functions</b> {functions}</span>}
       </div>
