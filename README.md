@@ -1,5 +1,7 @@
 # sls relations
 
+If you have multiple serverless services (https://serverless.com/) that belong to one project and they have dependencies to each other when deploy, use this to visualize their relationships and get an overview of the dependencies and Functions/Resources.
+
 The client side of this application was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 And thanks to vis.js and js-yaml that made parse the serverless.yml and graphing possible:
