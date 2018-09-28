@@ -1,22 +1,15 @@
-.App {
-  text-align: center;
-  margin: 20px;
-}
-
 .App button {
   margin-bottom: 10px;
   display: block;
 }
 
 #output {
-  margin: 10px auto;
+  margin-top: 10px;
   border: 1px solid #edf3ff;
-  width: 1200px;
   height: 500px;
 }
 
 .controls {
-  width: 1200px;
   margin: auto;
 }
 
@@ -30,4 +23,8 @@
 
 #file-upload {
   display: none;
+}
+
+.main {
+  margin-top: 20px;
 }
