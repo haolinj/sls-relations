@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+  margin: 20px;
+}
+
+.App button {
+  margin-bottom: 10px;
+  display: block;
+}
+
+#output {
+  margin: 10px auto;
+  border: 1px solid #edf3ff;
+  width: 1200px;
+  height: 500px;
+}
+
+.controls {
+  width: 1200px;
+  margin: auto;
+}
+
+.controls form {
+  text-align: left;
+}
+
+.controls form button {
+  margin: 10px 0 30px;
+}
+
+#file-upload {
+  display: none;
+}
