@@ -43,10 +43,10 @@ export const renderSelectedNode = (selectedNode) => {
     <div className='alert alert-info text-left' style={{ overflowX: 'scroll' }}>
       <h5>{selectedNode.name}</h5>
       <div style={{ marginBottom: '15px' }}>
-        {functions === '' ? null : <span><b>Functions</b> {functions}</span>}
+        {functions === '' ? null : <span><b>Functions ({fp.keys(selectedNode.functions).length})</b> {functions}</span>}
       </div>
       <div>
-        {resources === '' ? null : <span><b>Resources</b> {resources}</span>}
+        {resources === '' ? null : <span><b>Resources ({fp.keys(selectedNode.resources).length})</b> {resources}</span>}
       </div>
     </div>);
 };
